@@ -12,13 +12,9 @@ def calcula_fitness(cromossomo):
         # print( abs((send + more) - money))
         # a ideia e inverter, o mais perto de 1000000 é o melhor, antes era o mais perto de 0
         # Falta refinar a ideia do ABS
-        fitness1 = 100000 - abs((send + more) - money)  # Calcula a avaliação Avaliação
+        fitness1 = abs((send + more) - money)  # Calcula a avaliação Avaliação
         # print(fitness1)
         return fitness1
 
-a = calcula_fitness([7, 3, 1, 6, 0, 8, 2, 9, 4, 5])
+a = calcula_fitness([8, 5, 4, 2, 0, 9, 1, 7, 6, 3])
 print(a)
-contador = 0
-while contador < 5:
-    print("Teste")
-    contador +=1
