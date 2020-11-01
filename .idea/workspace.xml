@@ -2,10 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e7b24db2-bbfb-4dfd-953c-43dff422eac1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Testes/nsga.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Testes/teste_mutacao.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/agmo/nsga_1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/etapa_3/eat_that.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/etapa_3/send_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mineracao_dados/Testar_Regra.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mineracao_dados/mineracao_02_NSGA_II.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AG_primeiros_exemplos/roleta_investida_02.py" beforeDir="false" afterPath="$PROJECT_DIR$/AG_primeiros_exemplos/roleta_investida_02.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testes/teste_aptidao.py" beforeDir="false" afterPath="$PROJECT_DIR$/Testes/teste_aptidao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Relatorio Primeiro Trabalho.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Relatorio Primeiro Trabalho.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Testes/teste_pmx.py" beforeDir="false" afterPath="$PROJECT_DIR$/Testes/teste_pmx.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/etapa_3/coca_cola.py" beforeDir="false" afterPath="$PROJECT_DIR$/etapa_3/coca_cola.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/etapa_3/cross_roads.py" beforeDir="false" afterPath="$PROJECT_DIR$/etapa_3/cross_roads.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/etapa_3/donald_gerald.py" beforeDir="false" afterPath="$PROJECT_DIR$/etapa_3/donald_gerald.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mineracao_dados/mineracao_01.py" beforeDir="false" afterPath="$PROJECT_DIR$/mineracao_dados/mineracao_01.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,16 +43,81 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/AG_primeiros_exemplos" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mineracao_dados" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Documentos\Projetos em Andamento\Computacao_Evolutiva\mineracao_dados" />
+      <recent name="E:\Documentos\Projetos em Andamento\Computacao_Evolutiva\etapa_3" />
       <recent name="E:\Documentos\Projetos em Andamento\Computacao_Evolutiva\AG_primeiros_exemplos" />
       <recent name="E:\Documentos\Projetos em Andamento\Computacao_Evolutiva\AG etapa1_minimos" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.roleta_investida_02">
-    <configuration name="crossoverOX" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.mineracao_02_NSGA_II (1)">
+    <configuration name="mineracao_01" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Computacao_Evolutiva" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/mineracao_dados" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mineracao_dados/mineracao_01.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="mineracao_02_NSGA_II (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Computacao_Evolutiva" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/mineracao_dados" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mineracao_dados/mineracao_02_NSGA_II.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="mineracao_02_NSGA_II" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Computacao_Evolutiva" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/mineracao_dados" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="E:\Documentos\Projetos em Andamento\Computacao_Evolutiva\mineracao_dados\mineracao_02_NSGA_II.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="nsga" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Computacao_Evolutiva" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -53,7 +129,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Testes/crossoverOX.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Testes/nsga.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -62,49 +138,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="rank_linear_menor" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Computacao_Evolutiva" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AG etapa1_minimos" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AG etapa1_minimos/rank_linear_menor.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="roleta_investida_02" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Computacao_Evolutiva" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AG_primeiros_exemplos" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AG_primeiros_exemplos/roleta_investida_02.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="teste_aptidao" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="nsgaII" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Computacao_Evolutiva" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -116,28 +150,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Testes/teste_aptidao.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="teste_pmx" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Computacao_Evolutiva" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Testes" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Testes/teste_pmx.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Testes/nsgaII.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -148,11 +161,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.roleta_investida_02" />
-        <item itemvalue="Python.teste_aptidao" />
-        <item itemvalue="Python.crossoverOX" />
-        <item itemvalue="Python.teste_pmx" />
-        <item itemvalue="Python.rank_linear_menor" />
+        <item itemvalue="Python.mineracao_02_NSGA_II (1)" />
+        <item itemvalue="Python.nsgaII" />
+        <item itemvalue="Python.nsga" />
+        <item itemvalue="Python.mineracao_02_NSGA_II" />
+        <item itemvalue="Python.mineracao_01" />
       </list>
     </recent_temporary>
   </component>
@@ -167,48 +180,91 @@
       <option name="presentableId" value="Default" />
       <updated>1600135221979</updated>
     </task>
+    <task id="LOCAL-00001" summary="Mineração de dados com AG">
+      <created>1603302958332</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1603302958332</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Mineração de dados com AG" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mineração de dados com AG" />
+  </component>
   <component name="WindowStateProjectService">
-    <state width="1345" height="176" key="GridCell.Tab.0.bottom" timestamp="1600825426029">
+    <state x="420" y="173" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603292353046">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="176" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1600825426029" />
-    <state width="1345" height="176" key="GridCell.Tab.0.center" timestamp="1600825426029">
+    <state x="420" y="173" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1603292353046" />
+    <state x="327" y="0" key="CommitChangelistDialog2" timestamp="1603302953221">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="176" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1600825426029" />
-    <state width="1345" height="176" key="GridCell.Tab.0.left" timestamp="1600825426029">
+    <state x="327" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1603302953221" />
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1601559410336">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="176" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1600825426029" />
-    <state width="1345" height="176" key="GridCell.Tab.0.right" timestamp="1600825426029">
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1601559410336" />
+    <state width="1345" height="386" key="GridCell.Tab.0.bottom" timestamp="1604212497451">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="176" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1600825426029" />
-    <state width="1345" height="223" key="GridCell.Tab.1.bottom" timestamp="1600806213855">
+    <state width="1345" height="386" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1604212497451" />
+    <state width="1345" height="386" key="GridCell.Tab.0.center" timestamp="1604212497451">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="223" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1600806213855" />
-    <state width="1345" height="223" key="GridCell.Tab.1.center" timestamp="1600806213855">
+    <state width="1345" height="386" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1604212497451" />
+    <state width="1345" height="386" key="GridCell.Tab.0.left" timestamp="1604212497451">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="223" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1600806213855" />
-    <state width="1345" height="223" key="GridCell.Tab.1.left" timestamp="1600806213854">
+    <state width="1345" height="386" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1604212497451" />
+    <state width="1345" height="386" key="GridCell.Tab.0.right" timestamp="1604212497451">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="223" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1600806213854" />
-    <state width="1345" height="223" key="GridCell.Tab.1.right" timestamp="1600806213855">
+    <state width="1345" height="386" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1604212497451" />
+    <state width="1345" height="223" key="GridCell.Tab.1.bottom" timestamp="1604211736155">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="223" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1600806213855" />
-    <state x="390" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1600732476287">
+    <state width="1345" height="223" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1604211736155" />
+    <state width="1345" height="223" key="GridCell.Tab.1.center" timestamp="1604211736155">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="390" y="191" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1600732476287" />
+    <state width="1345" height="223" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1604211736155" />
+    <state width="1345" height="223" key="GridCell.Tab.1.left" timestamp="1604211736155">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1604211736155" />
+    <state width="1345" height="223" key="GridCell.Tab.1.right" timestamp="1604211736155">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1604211736155" />
+    <state x="275" y="99" key="Vcs.Push.Dialog.v2" timestamp="1603302967286">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="99" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1603302967286" />
+    <state x="390" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1604208519602">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="390" y="191" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1604208519602" />
     <state x="337" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1600806126338">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="337" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.728@0.0.1366.728" timestamp="1600806126338" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1603504476948">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1603504476948" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/etapa_3/send_more.py</url>
+          <line>358</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

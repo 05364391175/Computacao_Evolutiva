@@ -3,7 +3,7 @@ import datetime
 import copy
 
 taxaCrossover = 0.8
-taxaMutacao = 0.15
+taxaMutacao = 0.2
 geracaoSucesso = 0
 ngeracao = 0
 pior = 0
@@ -59,6 +59,9 @@ class AG():
     # Ordena a população para que o menor fica em primeiro
     def ordena_populacao_menor(self):
         self.populacao = sorted(self.populacao, key=lambda populacao: populacao.fitness, reverse=False)
+
+    def ordena_populacao_menor_parametro(self,lista):
+        return sorted(lista, key=lambda lista: lista.fitness, reverse=False)
 
     # O objetivo é somar todos os fitness para fazer o calculo de probabilidade na roleta
     def soma_fitness(self):
@@ -127,6 +130,19 @@ class AG():
             tuor -= 1
         return posicao
 
+    def torneio_estocastico(self, tuor):
+        # print("--inicio do torneio simples")
+        selecionados = []  # responsável por armazenar os individuos do torneio
+        menor = 0  # Captura o maior fitness do torneio
+        posicaoRetorno = 0
+        soma = self.soma_fitness()
+        while tuor > 0:
+            posicaoRetorno = self.roleta_leve(soma)
+            if (menor > self.populacao[posicaoRetorno].fitness):
+                menor = copy.deepcopy(self.populacao[posicaoRetorno].fitness)
+                posicao = posicaoRetorno
+            tuor -= 1
+        return posicaoRetorno
     # Método crossover cíclico, gerar os filhos com os genes dos pais
     def crossover_ciclico_ok(self, cro1, cro2):
 
@@ -352,14 +368,14 @@ class AG():
             fitness_do_segundo = Individuo.calcula_fitness(cro2)
             listaFilhosGerados.append(Individuo(cro2, fitness_do_segundo, ngeracao))
         # mutaçao
-        qtdMutacao = int(round(float(len(listaFilhosGerados) * taxaMutacao)))
+        listaFilhosGerados = AG.ordena_populacao_menor_parametro(self,listaFilhosGerados)
+        qtdMutacao = 0
+        if(listaFilhosGerados[0].fitness != 0):
+            qtdMutacao = int(round(float(len(listaFilhosGerados) * taxaMutacao)))
+            qtdMutacao = 20
+            #print("Diferente de 0 ",listaFilhosGerados[0].fitness)
         while qtdMutacao > 0:
             mutar = random.randint(0, len(listaFilhosGerados) - 1)
-            #if(listaFilhosGerados[mutar].fitness == 0):
-                #res = Individuo.calcula_fitness(listaFilhosGerados[mutar].cromossomo)
-                #if(res == 0):
-                    #qtdMutacao = 0
-            #else:
             cromossomoMutado = copy.deepcopy(self.mutacao_2g(listaFilhosGerados[mutar].cromossomo))
             fitness_mutado = Individuo.calcula_fitness(cromossomoMutado)
             listaFilhosGerados.append(Individuo(cromossomoMutado, fitness_mutado, ngeracao))
@@ -376,7 +392,7 @@ class AG():
 
 
 def main():
-    tamanoPop = 120
+    tamanoPop = 100
     geracao = 1
     global ngeracao
     global geracaoSucesso

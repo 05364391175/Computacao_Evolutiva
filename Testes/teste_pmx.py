@@ -73,3 +73,5 @@ def avalia_repeticao_pmx(cromossomo, posicaoDele):
 cro1 = [8, 3, 2, 4, 0, 9, 1, 7, 5, 6]
 cro2 = [8, 3, 2, 4, 0, 9, 1, 7, 5, 6]
 crossover_pmx(cro1,cro2)
+
+

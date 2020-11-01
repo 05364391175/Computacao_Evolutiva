@@ -2,8 +2,9 @@ import random
 import copy
 import datetime
 
+
 totalGenes = 33
-classeD = 4
+classeD = 1
 txcrossover = 1
 txmutacao = 0.3
 
@@ -53,11 +54,17 @@ class Genes():
 
 
 class Individuo():
-    def __init__(self, regra, listaGenes, listaPresente, fitness):
+    def __init__(self, regra, listaGenes, listaPresente, fitness, fitness2, fitness3, fitness4,fronteira,dummy_fitness, shared_fitness):
         self.regra = regra
         self.listaGenes = listaGenes
         self.listaPresente = listaPresente
         self.fitness = fitness
+        self.fitness2 = fitness2
+        self.fitness3 = fitness3
+        self.fitness4 = fitness4
+        self.fronteira = fronteira
+        self.dummy_fitness = dummy_fitness
+        self.shared_fitness = shared_fitness
 
     def calcularFitness(self, genes, listaPresente):
         tp = 0
@@ -101,15 +108,27 @@ class Individuo():
                 fn += 1
             elif (verifica == 1 and classeDoenca != classeD):
                 tn += 1
-        # print("TP ",tp)
-        # print("FP ",fp)
+        #print("TP ",tp)
+        #print("FP ",fp)
         # print("TN ",tn)
         # print("FN ",fn)
-        sensibilidade = tp / (tp + fn)
-        especialidade = tn / (tn + fp)
-        fitnessRetorno = sensibilidade * especialidade
+        se = tp / (tp + fn)
+        sp = tn / (tn + fp)
+        if(tp == 0 and fp ==0):
+            fitness2 = 0
+        else:
+            pr = tp / (tp + fp)
+            if(pr == 0 and se ==0):
+                fitness2 = 0
+            else:
+                fitness2 = (se * pr) / (se + pr)
+        nm = totalGenes
+        n = len(listaPresente)
+        fitness3 = (nm-n+1)/nm
+        fitnessRetorno = se * sp
+        fitness4 = 0.7
         # print("Fitness ",fitnessRetorno)
-        return fitnessRetorno
+        return fitnessRetorno,fitness2,fitness3,fitness4
 
 
 class AG():
@@ -134,13 +153,91 @@ class AG():
             # for k in range(len(listGenes)):
             # print(listGenes[k].nome," Peso ",listGenes[k].peso," Operador ",listGenes[k].operador," Valor ",listGenes[k].valor)
             # print(regra)
-            fitness = Individuo.calcularFitness(self, listGenes, listaPresente)
-            self.populacao.append(Individuo(regra, listGenes, listaPresente, fitness))
+            fitness,fitness2, fitness3,fitness4 = Individuo.calcularFitness(self, listGenes, listaPresente)
+            fronteira = 0
+            shared_fitness = 0
+            dummy_fitness = 0
+            self.populacao.append(Individuo(regra, listGenes, listaPresente, fitness,fitness2,fitness3,fitness4,fronteira,dummy_fitness,shared_fitness))
 
         # Ordena a população para que o maior fica em primeiro
 
-    def ordena_populacao_maior(self):
+    def classificar_fronteira(self):
+        npop = copy.deepcopy(self.populacao)
+        self.ordena_populacao_maior_fitness2()
+        menor_fitness2 = self.populacao[len(self.populacao) - 1].fitness
+        maior_fitness2 = self.populacao[0].fitness
+        self.ordena_populacao_maior_fitness1()
+        menor_fitness1 = self.populacao[len(self.populacao)-1].fitness
+        maior_fitness1 = self.populacao[0].fitness
+        self.populacao.clear()
+        fronteira = 1
+        final = len(npop)
+        while final > 0:
+            #print("Nova fronteira")
+            frente = self.frente_paredo(npop)
+            #print("Tamanho ",len(frente))
+            tamanho = len(frente)
+            cont = 0
+            for i in frente:
+                if(tamanho < 3 or cont == 0 or cont == (tamanho-1)):
+                    #print(tamanho)
+                    distancia = 10000
+                else:
+                    distancia = self.calcular_shared_distance(cont,frente,menor_fitness1,maior_fitness1,menor_fitness2,maior_fitness2)
+                i.fronteira = fronteira
+                i.shared_fitness = distancia
+                self.populacao.append(i)
+                #print(len(npop))
+                npop.remove(i)
+                cont+=1
+                #print(len(npop))
+            final = len(npop)
+            fronteira += 1
+
+        # gerar a frente ótima de paredo
+
+    def frente_paredo(self, npop):
+        frente_otima = []
+        comparando = 0
+        while comparando < len(npop):
+            dominado = 0
+            comparado_hh = 0
+            while comparado_hh < len(npop):
+                if (npop[comparando].fitness > npop[comparado_hh].fitness or npop[comparando].fitness2 > npop[
+                    comparado_hh].fitness2):
+                    t = 0
+                    #print("aqui porra")
+                elif((npop[comparando].fitness == npop[comparado_hh].fitness and npop[comparando].fitness2 == npop[
+                    comparado_hh].fitness2)) and comparando != comparado_hh:
+                    t = 0
+                elif(comparando == comparado_hh):
+                    t=0
+                else:
+                    #print("Dominado")
+                    #print(npop[comparando].fitness," ",npop[comparando].fitness2)
+                    #print(npop[comparado_hh].fitness, " ", npop[comparado_hh].fitness2)
+                    dominado = 1
+                    comparado_hh = len(npop)
+                comparado_hh += 1
+            if (dominado == 0):
+                frente_otima.append(npop[comparando])
+            comparando += 1
+        return frente_otima
+
+    def calcular_shared_distance(self, posicao, pop_fron,menor_fitness1,maior_fitness1,menor_fitness2,maior_fitness2):
+        f1_dis = abs((pop_fron[posicao+1].fitness-pop_fron[posicao-1].fitness)) #/ maior_fitness1 - menor_fitness1
+        f2_dis = abs((pop_fron[posicao + 1].fitness2 - pop_fron[posicao - 1].fitness2)) #/ maior_fitness2 - menor_fitness2
+        distancia = f1_dis + f2_dis
+        return distancia
+
+    def ordena_populacao_maior_fitness1(self):
         self.populacao = sorted(self.populacao, key=lambda populacao: populacao.fitness, reverse=True)
+
+    def ordena_populacao_maior_fitness2(self):
+        self.populacao = sorted(self.populacao, key=lambda populacao: populacao.fitness2, reverse=True)
+
+    def ordena_populacao_fronteira(self):
+        self.populacao = sorted(self.populacao, key=lambda populacao: populacao.fronteira, reverse=True)
 
     # O objetivo é somar todos os fitness para fazer o calculo de probabilidade na roleta
     def soma_fitness(self):
@@ -213,11 +310,17 @@ class AG():
         filho2.regra = regra2
         filho2.listaPresente.extend(listaPresente2)
 
-        fitness1 = Individuo.calcularFitness(self, filho1.listaGenes, filho1.listaPresente)
-        filho1.fitness = fitness1
+        f1_fitness1, f1_f2, f1_f3,f1_f4 = Individuo.calcularFitness(self, filho1.listaGenes, filho1.listaPresente)
+        filho1.fitness = f1_fitness1
+        filho1.fitness2 = f1_f2
+        filho1.fitness3 = f1_f3
+        filho1.fitness4 = f1_f4
         # print(fitness1)
-        fitness2 = Individuo.calcularFitness(self, filho2.listaGenes, filho2.listaPresente)
-        filho2.fitness = fitness2
+        f2_fitness2, f2_f2, f2_f3,f2_f4 = Individuo.calcularFitness(self, filho2.listaGenes, filho2.listaPresente)
+        filho2.fitness = f2_fitness2
+        filho2.fitness2 = f2_f2
+        filho2.fitness3 = f2_f3
+        filho2.fitness4 = f2_f4
         # print(fitness2)
         filhos = []
         filhos.append(filho1)
@@ -271,7 +374,7 @@ class AG():
         melhor = copy.deepcopy(self.populacao[0])
         filhosR = []
         filhosR.clear()
-        print("O melhor é ", melhor.fitness)
+        print("Fitness 1  ", melhor.fitness," F-score ",melhor.fitness2," simplicidade ",melhor.fitness3)
         totalCrssocer = int(txcrossover * len(self.populacao) / 2)
         totalMutacao = int(txmutacao * len(self.populacao))
         for i in range(totalCrssocer):
@@ -296,7 +399,11 @@ class AG():
             filhosR[idpeso].regra = regraPeso
             filhosR[idpeso].listaPresente.clear()
             filhosR[idpeso].listaPresente.extend(listaPeso)
-            filhosR[idpeso].fitness = Individuo.calcularFitness(self, filhosR[idpeso].listaGenes, listaPeso)
+            f1, f2,f3,f4 = Individuo.calcularFitness(self, filhosR[idpeso].listaGenes, listaPeso)
+            filhosR[idpeso].fitness = f1
+            filhosR[idpeso].fitness2 = f2
+            filhosR[idpeso].fitness3 = f3
+            filhosR[idpeso].fitness4 = f4
 
             idoperador = random.randint(0, len(filhosR) - 1)
             op = random.randint(0, totalGenes - 1)
@@ -305,7 +412,12 @@ class AG():
             filhosR[idoperador].regra = regraOperador
             filhosR[idoperador].listaPresente.clear()
             filhosR[idoperador].listaPresente.extend(listaOperador)
-            filhosR[idoperador].fitness = Individuo.calcularFitness(self, filhosR[idoperador].listaGenes, listaOperador)
+            f1, f2,f3,f4 = Individuo.calcularFitness(self, filhosR[idoperador].listaGenes, listaOperador)
+            filhosR[idoperador].fitness = f1
+            filhosR[idoperador].fitness2 = f2
+            filhosR[idoperador].fitness3 = f3
+            filhosR[idoperador].fitness4 = f4
+
 
             idvalor = random.randint(0, len(filhosR) - 1)
             vl = random.randint(0, totalGenes - 1)
@@ -314,7 +426,11 @@ class AG():
             filhosR[idvalor].regra = regraValor
             filhosR[idvalor].listaPresente.clear()
             filhosR[idvalor].listaPresente.extend(listaValor)
-            filhosR[idvalor].fitness = Individuo.calcularFitness(self, filhosR[idvalor].listaGenes, listaValor)
+            f1,f2,f3,f4 = Individuo.calcularFitness(self, filhosR[idvalor].listaGenes, listaValor)
+            filhosR[idvalor].fitness = f1
+            filhosR[idvalor].fitness2 = f2
+            filhosR[idvalor].fitness3 = f3
+            filhosR[idvalor].fitness4 = f4
         self.populacao.clear()
         self.populacao.append(melhor)
         self.populacao.extend(filhosR)
@@ -327,16 +443,25 @@ def main():
     a = AG(tamanoPop);
     a.populacao.clear()
     a.init_populacao()
-    a.ordena_populacao_maior()
+    for i in a.populacao:
+        print(" Fitness 1 ", i.fitness, " Fitness 2 ", i.fitness2)
+    a.classificar_fronteira()
+    for i in a.populacao:
+        print("Fronteira ",i.fronteira, " Fitness 1 ",i.fitness, " Fitness 2 ",i.fitness2," Shared ",i.shared_fitness)
+
+
+    a.ordena_populacao_fronteira()
     for i in range(len(a.populacao)):
         print(a.populacao[i].fitness)
     while ngeracao < geracao:
+        a.classificar_fronteira()
         print("Geração ", ngeracao)
         a.geracoes()
-        a.ordena_populacao_maior()
+        a.ordena_populacao_maior_fitness1()
 
         ngeracao += 1
     print(a.populacao[0].fitness, " ", a.populacao[0].regra)
+
 
 
 def testarRegra():

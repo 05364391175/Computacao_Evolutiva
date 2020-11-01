@@ -1,11 +1,12 @@
+import random
 import datetime
 import copy
-import random
 
 taxaCrossover = 0.8
 taxaMutacao = 0.2
 geracaoSucesso = 0
 ngeracao = 0
+pior = 0
 
 
 class Individuo():
@@ -21,10 +22,19 @@ class Individuo():
 
     # Calcula a avaliação de um cromossomo individual
     def calcula_fitness(cromossomo):
-        cross = int(str(cromossomo[0]) + str(cromossomo[1]) + str(cromossomo[2]) + str(cromossomo[3]) + str(cromossomo[3]))  # concatena as posições do SEND
-        roads = int(str(cromossomo[1]) + str(cromossomo[2]) + str(cromossomo[4]) + str(cromossomo[5]) + str(cromossomo[3]))  # concatena as posições do MORE
-        danger = int(str(cromossomo[5]) + str(cromossomo[4]) + str(cromossomo[6]) + str(cromossomo[7]) + str(cromossomo[8])+ str(cromossomo[1]))  # concatena as posições do MONEY
-        fitness1 = abs((cross + roads) - danger)  # Calcula a avaliação Avaliação
+        send = int(str(cromossomo[0]) + str(cromossomo[1]) + str(cromossomo[2]) + str(
+            cromossomo[3]))  # concatena as posições do SEND
+        # print("SEND ", send)
+        more = int(str(cromossomo[4]) + str(cromossomo[5]) + str(cromossomo[6]) + str(
+            cromossomo[1]))  # concatena as posições do MORE
+        # print("MORE", more)
+        money = int(str(cromossomo[4]) + str(cromossomo[5]) + str(cromossomo[2]) + str(cromossomo[1]) + str(
+            cromossomo[7]))  # concatena as posições do MONEY
+        # print("MONEY", money)
+        # print( abs((send + more) - money))
+        # a ideia e inverter, o mais perto de 1000000 é o melhor, antes era o mais perto de 0
+        # Falta refinar a ideia do ABS
+        fitness1 = abs((send + more) - money)  # Calcula a avaliação Avaliação
         # print(fitness1)
         return fitness1
 
@@ -69,15 +79,14 @@ class AG():
     def roleta_leve(self, soma_fitness):
         global pior
         selecionado = -1
-        valor_sorteado = random.randint(0, soma_fitness)
+        valor_sorteado = random.uniform(0, soma_fitness)
         soma = 0
         i = 0
-        while i < len(self.populacao) and soma < valor_sorteado:
+        while i < len(self.populacao) and soma <= valor_sorteado:
             soma += pior + 1 - self.populacao[i].fitness
             selecionado += 1
             i += 1
         return selecionado
-
 
     # método de seleção utilizando o Rank Linear
     def rank_linear(self):
@@ -367,15 +376,15 @@ class AG():
     def criaGeracao(self, totalPares):
         listaFilhosGerados = []
         listaFilhosGerados.clear()
-        soma = AG.soma_fitness(self)
+        #soma = AG.soma_fitness(self)
         for i in range(0, int(totalPares / 2)):
-            valor1 = AG.roleta_leve(self,soma)
+            valor1 = AG.rank_linear(self)
             # print(valor1)
             # print(valor1, " ",self.populacao[valor1].cromossomo)
-            valor2 = AG.roleta_leve(self,soma)
+            valor2 = AG.rank_linear(self)
             contador = 0
             while valor1 == valor2 and contador < 3:
-                valor2 = AG.roleta_leve(self,soma)
+                valor2 = AG.rank_linear(self)
                 contador += 1
             # print(valor2)
             # criei uma variável a mais só para não ficar mudando quando for trocar de método de seleção
@@ -389,17 +398,17 @@ class AG():
             fitness_do_segundo = Individuo.calcula_fitness(cro2)
             listaFilhosGerados.append(Individuo(cro2, fitness_do_segundo, ngeracao))
         # mutaçao
-        listaFilhosGerados = AG.ordena_populacao_menor_parametro(self, listaFilhosGerados)
+        listaFilhosGerados = AG.ordena_populacao_menor_parametro(self,listaFilhosGerados)
         qtdMutacao = 0
-        if (listaFilhosGerados[0].fitness != 0):
+        if(listaFilhosGerados[0].fitness != 0):
             qtdMutacao = int(round(float(len(listaFilhosGerados) * taxaMutacao)))
             qtdMutacao = 20
-            # print("Diferente de 0 ",listaFilhosGerados[0].fitness)
+            #print("Diferente de 0 ",listaFilhosGerados[0].fitness)
         while qtdMutacao > 0:
             mutar = random.randint(0, len(listaFilhosGerados) - 1)
-            cromossomoMutado = copy.deepcopy(self.mutacao_sim(listaFilhosGerados[mutar].cromossomo))
+            cromossomoMutado = copy.deepcopy(self.mutacao_2g(listaFilhosGerados[mutar].cromossomo))
             fitness_mutado = Individuo.calcula_fitness(cromossomoMutado)
-            if(fitness_mutado ==0):
+            if (fitness_mutado == 0):
                 qtdMutacao = 0
             listaFilhosGerados.append(Individuo(cromossomoMutado, fitness_mutado, ngeracao))
             qtdMutacao -= 1
@@ -417,8 +426,9 @@ class AG():
 
 
 
+
 def main():
-    tamanoPop = 120
+    tamanoPop = 100
     geracao = 1
     global ngeracao
     global geracaoSucesso
@@ -429,7 +439,7 @@ def main():
     a.ordena_populacao_menor()
     # for i in range(len(a.populacao)):
     # print(a.populacao[i].cromossomo, " ",a.populacao[i].fitness)
-    while ngeracao < 70:
+    while ngeracao < 50:
         # print("Geração ",ngeracao)
         totalPares = len(a.populacao) * taxaCrossover
         # print(totalPares)
@@ -446,8 +456,6 @@ def main():
                 print("Rever!")
             ngeracao = 200
         ngeracao += 1
-
-
 def main2():
     tamanoPop = 120
     geracao = 1
@@ -504,12 +512,11 @@ def main2():
             cont = 200
         cont+=1
 
-
 execucao = 0
 datetime_inicio = datetime.datetime.now()
 while execucao < 200:
     print("Execução ", execucao)
-    main2()
+    main()
     execucao += 1
 print("taxa de convergencia: ", (geracaoSucesso / execucao * 100), "%")
 datetime_fim = datetime.datetime.now()
