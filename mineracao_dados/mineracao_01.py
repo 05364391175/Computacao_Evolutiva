@@ -3,7 +3,7 @@ import copy
 import datetime
 
 totalGenes = 33
-classeD = 4
+classeD = 1
 txcrossover = 1
 txmutacao = 0.3
 
